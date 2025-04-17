@@ -2,13 +2,13 @@ package com.example.brokagedemo.model.entity;
 
 import com.example.brokagedemo.enums.OrderSide;
 import com.example.brokagedemo.enums.Status;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
 public class Order extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @JsonManagedReference
     private Customer customer;
 
     @Enumerated(EnumType.STRING)

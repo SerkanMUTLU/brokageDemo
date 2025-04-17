@@ -1,6 +1,7 @@
 package com.example.brokagedemo.service;
 
 import com.example.brokagedemo.model.dto.customerservice.CustomerResponse;
+import com.example.brokagedemo.model.entity.Customer;
 import com.example.brokagedemo.model.mappers.CustomerMapper;
 import com.example.brokagedemo.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,14 @@ public class CustomerService {
 
     public Boolean checkCustomerExistById(Long id) {
         return customerRepository.existsById(id);
+    }
+
+    public Boolean checkIfExistCustomerByMail(String mail) {
+        return customerRepository.existsByMail(mail);
+    }
+
+    public Customer createNewCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
 
 }
